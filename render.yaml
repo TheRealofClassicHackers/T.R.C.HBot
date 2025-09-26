@@ -2,9 +2,27 @@ services:
   - type: web
     name: t-r-c-h-bot
     env: python
-    buildCommand: pip install -r requirements.txt && apt-get update && apt-get install -y chromedriver
+    pythonVersion: "3.12"
+    buildCommand: apt-get update && apt-get install -y chromium-browser && pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     disk:
       name: profiles-disk
       mountPath: /app/profiles
       sizeGB: 1
+    envVars:
+      - key: MASTER_CONTACT_NAME
+        value: 0768364144@s.whatsapp.net
+      - key: PROFILES_DIR
+        value: /app/profiles
+      - key: LOGO_PATH
+        value: /app/bot_logo.png
+      - key: IS_PREMIUM
+        value: False
+      - key: BOT_NAME
+        value: T.R.C.H_Bot
+      - key: MESSAGE_LIMIT
+        value: 10
+      - key: LIMIT_RESET_SECONDS
+        value: 3600
+      - key: PAIRED_SESSIONS_FILE
+        value: /app/paired_sessions.json
