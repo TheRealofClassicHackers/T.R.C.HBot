@@ -1,4 +1,4 @@
-wa-automate==1.3.16
+wa-automate==0.1.3
 pyttsx3==2.90
 pillow==10.4.0
 requests==2.32.3
